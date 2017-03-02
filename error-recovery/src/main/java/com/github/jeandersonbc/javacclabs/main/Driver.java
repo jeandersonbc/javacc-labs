@@ -6,16 +6,15 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import com.github.jeandersonbc.javacclabs.parser.AwesomeGrammar;
-import com.github.jeandersonbc.javacclabs.parser.ParseException;
 
 public class Driver {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) {
 		System.out.printf("Input files: %s\n", Arrays.toString(args));
 		for (String source : args) {
 			try {
 				AwesomeGrammar parser = new AwesomeGrammar(new BufferedInputStream(new FileInputStream(source)));
-				parser.one_line();
+				parser.parse();
 				System.out.println("Done!");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
