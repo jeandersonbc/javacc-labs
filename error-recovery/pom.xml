@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.jeandersonbc.javacclabs</groupId>
+	<artifactId>error-recovery</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>error-recovery</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<javacc-maven-plugin.version>2.6</javacc-maven-plugin.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javacc-maven-plugin</artifactId>
+				<version>${javacc-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>javacc</id>
+						<goals>
+							<goal>javacc</goal>
+						</goals>
+						<configuration>
+							<grammarEncoding>${project.build.sourceEncoding}</grammarEncoding>
+							<jdkVersion>${java.version}</jdkVersion>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.java.dev.javacc</groupId>
+						<artifactId>javacc</artifactId>
+						<version>6.1.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
